@@ -1,0 +1,91 @@
+.custom-marker-icon {
+    position: relative;
+  }
+  
+  .marker-icon-wrapper {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .marker-icon {
+    width: 20px;
+    height: 20px;
+    background-color: #007bff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.7);
+    animation: bounce 1s infinite alternate;
+    position: relative;
+    z-index: 10;
+  }
+  
+  .marker-pulse {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #007bff;
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: pulse 2s infinite;
+    z-index: 5;
+  }
+  
+  @keyframes bounce {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(0.8);
+      opacity: 0.6;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.3;
+    }
+    100% {
+      transform: scale(0.8);
+      opacity: 0.6;
+    }
+  }
+  
+  .marker-enter {
+    animation: zoomIn 0.5s ease-out;
+  }
+  
+  .marker-leave {
+    animation: zoomOut 0.5s ease-in;
+  }
+  
+  @keyframes zoomIn {
+    from {
+      transform: scale(0);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes zoomOut {
+    from {
+      transform: scale(1);
+      opacity: 1;
+    }
+    to {
+      transform: scale(0);
+      opacity: 0;
+    }
+  }
