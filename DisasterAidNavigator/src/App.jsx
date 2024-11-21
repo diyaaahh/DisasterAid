@@ -12,13 +12,14 @@ import HospitalPage from "./pages/NearbyHospitalPage";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/chatbot" element={<ChatInterface />} />
-        <Route path="/hospital" element={<HospitalPage/>}/>
-      </Routes>
-    </Router>
+    // <Router>
+    //   <Routes>
+    //     <Route path="/" element={<Home />} />
+    //     <Route path="/chatbot" element={<ChatInterface />} />
+    //     <Route path="/hospital" element={<HospitalPage/>}/>
+    //   </Routes>
+    // </Router>
+    <HospitalPage/>
     // <>
     //   {" "}
     //   <Home />
