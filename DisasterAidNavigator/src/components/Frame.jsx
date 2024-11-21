@@ -3,7 +3,7 @@ import map from "../assets/map.png";
 
 function Frame() {
   return (
-    <div className="frame-container">
+    <div className="frame-container " >
       <div className="info-box">
         <div className="medical-attention">
           <img src={map} alt="Map" className="map-image" />

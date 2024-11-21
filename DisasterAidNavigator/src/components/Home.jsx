@@ -1,8 +1,11 @@
 import "../App.css";
 import logo from "../assets/logo2.png";
+import ChatInterface from "./Chat";
+import Frame from "./Frame";
 
 function Home() {
   return (
+    <>
     <div className="container">
       <div className="logo">
         <img src={logo} alt="Logo" />
@@ -15,6 +18,9 @@ function Home() {
       </div>
       <div className="button1">Do you need help ?</div>
     </div>
+    <Frame />
+    <ChatInterface />
+    </>
   );
 }
 

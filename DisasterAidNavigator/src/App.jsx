@@ -9,21 +9,20 @@ import Home from "./components/Home";
 import Frame from "./components/Frame";
 import HomePage from "./components/HomePage";
 import HospitalPage from "./pages/NearbyHospitalPage";
+import DisasterHeatmap from "./pages/DisasterPage";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<Home/>} />
+        <Route path="/h" element={<HomePage/>} />
         <Route path="/chatbot" element={<ChatInterface />} />
         <Route path="/hospital" element={<HospitalPage/>}/>
+        <Route path="/disaster" element={<DisasterHeatmap/>}/>
       </Routes>
     </Router>
-    // <>
-    //   {" "}
-    //   <Home />
-    //   <Frame />
-    // </>
+   
   );
 }
 
