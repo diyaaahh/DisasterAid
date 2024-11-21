@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 /* Add this to your index.css or App.css file */
 @import url("https://unpkg.com/leaflet@1.7.1/dist/leaflet.css");
 /* Global Styles */
@@ -21,29 +24,7 @@ body {
   position: relative;
 }
 
-/* Navbar Styling */
-.navbar {
-  position: sticky;
-  top: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  background-color: rgba(
-    0,
-    53,
-    113,
-    0.8
-  ); /* Transparent dark blue background */
-  backdrop-filter: blur(10px); /* Frosted glass effect */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  z-index: 100;
-  transition: background-color 0.3s ease;
-}
 
-.navbar:hover {
-  background-color: rgba(0, 53, 113, 1); /* Darker on hover */
-}
 
 /* Logo Styling */
 .logo {
@@ -62,81 +43,6 @@ body {
   transform: scale(1.1); /* Slight zoom on hover */
 }
 
-/* Navbar Links Styling */
-.nav-links {
-  display: flex;
-  list-style: none;
-  align-items: center;
-}
-
-.nav-links li {
-  margin: 0 25px;
-  position: relative;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: white;
-  font-size: 25px;
-  font-weight: 400;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.nav-links a:hover {
-  color: #00bcd4;
-  transform: translateY(-4px);
-}
-
-/* Mobile Menu Icon */
-.mobile-menu-icon {
-  display: none;
-  background: none;
-  color: white;
-  font-size: 30px;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.mobile-menu-icon:hover {
-  transform: scale(1.2);
-}
-
-/* Mobile View */
-.nav-links-mobile {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 60px;
-  right: 0;
-  width: 100%;
-  height: calc(100vh - 60px);
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
-  transform: translateX(100%);
-  transition: transform 0.3s ease-in-out;
-}
-
-.nav-links-mobile.show {
-  transform: translateX(0);
-}
-
-.nav-links-mobile li {
-  margin: 20px 0;
-}
-
-.nav-links-mobile a {
-  font-size: 22px;
-  color: white;
-  text-transform: capitalize;
-}
-
-.nav-links-mobile a:hover {
-  color: #00bcd4;
-}
 
 /* Main Container */
 .container {
@@ -425,6 +331,12 @@ body {
 /* Button Active State */
 .button:active {
   transform: translateY(2px);
+}
+
+
+.map-container {
+  height: 100vh; /* Set the height */
+  width: 100%;   /* Set the width */
 }
 
 /* Responsiveness for Smaller Screens */
