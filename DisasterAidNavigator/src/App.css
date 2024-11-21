@@ -1,2 +1,446 @@
 /* Add this to your index.css or App.css file */
-@import url('https://unpkg.com/leaflet@1.7.1/dist/leaflet.css');
+@import url("https://unpkg.com/leaflet@1.7.1/dist/leaflet.css");
+/* Global Styles */
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(
+    135deg,
+    #1d3c6e,
+    #004f89
+  ); /* Beautiful gradient */
+  color: #fff;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Navbar Styling */
+.navbar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: rgba(
+    0,
+    53,
+    113,
+    0.8
+  ); /* Transparent dark blue background */
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  transition: background-color 0.3s ease;
+}
+
+.navbar:hover {
+  background-color: rgba(0, 53, 113, 1); /* Darker on hover */
+}
+
+/* Logo Styling */
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 110px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.logo img:hover {
+  transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/* Navbar Links Styling */
+.nav-links {
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links li {
+  margin: 0 25px;
+  position: relative;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 25px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #00bcd4;
+  transform: translateY(-4px);
+}
+
+/* Mobile Menu Icon */
+.mobile-menu-icon {
+  display: none;
+  background: none;
+  color: white;
+  font-size: 30px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.mobile-menu-icon:hover {
+  transform: scale(1.2);
+}
+
+/* Mobile View */
+.nav-links-mobile {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 100%;
+  height: calc(100vh - 60px);
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav-links-mobile.show {
+  transform: translateX(0);
+}
+
+.nav-links-mobile li {
+  margin: 20px 0;
+}
+
+.nav-links-mobile a {
+  font-size: 22px;
+  color: white;
+  text-transform: capitalize;
+}
+
+.nav-links-mobile a:hover {
+  color: #00bcd4;
+}
+
+/* Main Container */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: linear-gradient(
+    to top,
+    #1e3c72 0%,
+    #1e3c72 1%,
+    #2a5298 100%
+  );
+  color: white;
+  padding: 20px;
+  text-align: center;
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Website Name Styling */
+.website-name h1 {
+  font-size: 60px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  color: #fff;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Logo Image Styling */
+.container .logo img {
+  width: 200px;
+  height: auto;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Slogan Styling */
+.slogan p {
+  font-size: 26px;
+  font-style: italic;
+  color: #e1e1e1;
+  animation: fadeIn 2s ease-in-out 0.5s; /* Fade-in effect */
+}
+
+/* Centered Button Styling */
+.button1 {
+  padding: 20px 40px;
+  background-color: #00bcd4;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 600;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 6px 20px rgba(0, 188, 212, 0.4);
+  animation: bounceIn 1s ease-in-out;
+}
+
+.button1:hover {
+  background-color: #0097a7;
+  transform: translateX(-50%) scale(1.1) translateY(-5px); /* Slight hover scale */
+}
+
+/* Bounce Animation for Button */
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .mobile-menu-icon {
+    display: block;
+  }
+
+  .navbar {
+    padding: 15px 20px;
+  }
+
+  .website-name h1 {
+    font-size: 40px; /* Reduce font size on small screens */
+  }
+
+  .slogan p {
+    font-size: 20px; /* Adjust slogan font size for small screens */
+  }
+
+  .container {
+    padding: 10px; /* Adjust container padding for mobile */
+  }
+
+  .button1 {
+    font-size: 18px; /* Adjust button size for mobile */
+    padding: 15px 30px;
+    bottom: 10%;
+  }
+}
+
+/* Container for the whole frame */
+.frame-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f1f1f1;
+  padding: 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Box containing the medical information */
+.info-box {
+  background-color: #1d3c6e;
+  border-radius: 15px;
+  width: 240px;
+  padding: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+/* Medical Attention Section */
+.medical-attention {
+  background-color: white;
+  border-radius: 15px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.map-image {
+  height: 150px;
+  width: 160px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.medical-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  font-family: Arial, sans-serif;
+  margin-top: 10px;
+  text-transform: capitalize;
+}
+
+/* Adjustments for small screens */
+@media (max-width: 768px) {
+  .info-box {
+    width: 90%;
+  }
+
+  .map-image {
+    width: 100%;
+  }
+}
+/* Frame Container */
+.frame-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full screen height */
+  background: linear-gradient(
+    135deg,
+    #1d3c6e,
+    #004f89
+  ); /* Gradient background */
+  padding: 20px;
+}
+
+/* Info Box */
+.info-box {
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 300px;
+  transition: all 0.3s ease;
+}
+
+/* Hover Effect for Info Box */
+.info-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Medical Attention Section */
+.medical-attention {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  background-color: #f0f9ff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.medical-attention:hover {
+  transform: translateY(-5px);
+}
+
+/* Map Image */
+.map-image {
+  width: 220px;
+  height: 220px;
+  border-radius: 12px;
+  object-fit: cover;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.map-image:hover {
+  transform: scale(1.1);
+}
+
+/* Text Styling */
+.medical-text {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: "Arial", sans-serif;
+}
+
+.button {
+  padding: 12px 25px;
+  background-color: #00bcd4;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Button Hover Effect */
+.button:hover {
+  background-color: #0097a7;
+  transform: translateY(-3px);
+}
+
+/* Button Active State */
+.button:active {
+  transform: translateY(2px);
+}
+
+/* Responsiveness for Smaller Screens */
+@media (max-width: 768px) {
+  .info-box {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .map-image {
+    width: 180px;
+    height: 180px;
+  }
+
+  .button {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+}
