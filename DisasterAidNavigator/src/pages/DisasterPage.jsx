@@ -11,7 +11,7 @@ const HeatmapLayer = ({ points }) => {
     if (points.length > 0) {
       const heatLayer = L.heatLayer(points, {
         radius: 9,
-        blur: 25,
+        blur: 35,
         maxZoom: 17,
         gradient: {
           0.2: 'blue',
@@ -82,11 +82,11 @@ const DisasterHeatmap = () => {
             way["natural"="water"](around:1000,${currentLocation[0]},${currentLocation[1]});
             
             // Landslide-prone areas
-            way["natural"="cliff"](around:2000,${currentLocation[0]},${currentLocation[1]});
-            way["natural"="ridge"](around:2000,${currentLocation[0]},${currentLocation[1]});
+            way["natural"="cliff"](around:3000,${currentLocation[0]},${currentLocation[1]});
+            way["natural"="ridge"](around:3000,${currentLocation[0]},${currentLocation[1]});
             
             // Earthquake fault lines
-            way["geological"="fault"](around:2000,${currentLocation[0]},${currentLocation[1]});
+            way["geological"="fault"](around:3000,${currentLocation[0]},${currentLocation[1]});
           );
           out body;
           >;

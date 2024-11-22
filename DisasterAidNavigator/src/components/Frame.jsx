@@ -11,6 +11,14 @@ function Frame() {
   const openPopup = () => setIsPopupVisible(true);
   const closePopup = () => setIsPopupVisible(false);
 
+  function checkCall() {
+    if (!navigator.userAgent.match(/Mobi/)) {
+      openPopup();
+    }
+
+  }
+
+
   return (
     <>
       <div className="alert-background">
@@ -72,9 +80,9 @@ function Frame() {
             <img src={call} alt="Map" className="map-image" />
             <div className="medical-text">Call Nearby Rescuer</div>
             <div className="call">
-              <button id="open-popup " className="button" onClick={openPopup}>
-                Call Rescuer
-              </button>
+              {/* <button id="open-popup " className="button" onClick={openPopup} > */}
+              <a  id="open-popup" className="button" href="tel:+977 9842136211" onClick={checkCall}>Call Rescuer</a>
+              {/* </button> */}
             </div>
           </div>
         </div>

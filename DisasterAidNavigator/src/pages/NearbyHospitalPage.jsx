@@ -74,6 +74,11 @@ export default function HospitalPage() {
     return (meters / 1000).toFixed(1) + ' km';
   };
 
+  function checkCall() {
+    if (!navigator.userAgent.match(/Mobi/)) {
+      alert("This feature is only available on mobile devices.");
+    }
+  }
 
   return (
     <div className="flex h-screen">
@@ -143,6 +148,8 @@ export default function HospitalPage() {
                     </div>
                   </div>
                 )}
+
+                <a  href="tel:+977 9842136211" onClick={checkCall}>Call Us 📞</a>
               </div>
             )
           )}
@@ -181,6 +188,8 @@ export default function HospitalPage() {
               </div>
             </div>
           )}
+
+        
 
         </nav>
       </div>
