@@ -58,7 +58,7 @@ body {
   height: 100vh;
 
   color: white;
-  margin-left: 500px;
+  margin-left: 100px;
   /* Changes */
   text-align: center;
   position: relative;
@@ -103,7 +103,7 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
   position: absolute;
-  bottom: 30%;
+  bottom: 20%;
   /* Changes */
   left: 50%;
   transform: translateX(-50%);
