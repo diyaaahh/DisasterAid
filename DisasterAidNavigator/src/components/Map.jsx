@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import HospitalFinder from './HospitalFinder';
 
-export default function Map() {
+export default function Map({setUserPosition}) {
   const [location, setLocation] = useState(null);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(true);
@@ -16,7 +16,9 @@ export default function Map() {
             lat: position.coords.latitude,
             lon: position.coords.longitude,
           });
+          
           setIsLoading(false);
+
         },
         (err) => {
           setError('Unable to retrieve your location: ' + err.message);
@@ -29,11 +31,14 @@ export default function Map() {
     }
   }
 
-  console.log(location);
 
   useEffect(() => {
+    console.log("Fetching user location...");
     getUserLocation();
   }, []);
+  
+
+  
 
   return (
     <div className='flex-1 relative'>
