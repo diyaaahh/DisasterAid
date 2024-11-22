@@ -1,17 +1,10 @@
-/* Add this to your index.css or App.css file */
 @import url("https://unpkg.com/leaflet@1.7.1/dist/leaflet.css");
-/* Global Styles */
-/* Global Styles */
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.map-container {
-  height: 100vh;
-  width: 100%;
-}
-
+/* Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -25,21 +18,35 @@ body {
     #1e3c72 0%,
     #1e3c72 1%,
     #2a5298 100%
-  ); /* Beautiful gradient */
+  );
   color: #fff;
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
 }
 
-/* Logo Styling */
+/* Responsive Container */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: clamp(1rem, 5vw, 3rem);
+  margin-left: clamp(1rem, 5vw, 100px);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Logo Styles */
 .logo {
   display: flex;
   align-items: center;
 }
 
 .logo img {
-  width: 110px;
+  width: clamp(80px, 10vw, 110px);
   height: auto;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
@@ -49,54 +56,31 @@ body {
   transform: scale(1.1);
 }
 
-/* Main Container */
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-
-  color: white;
-  margin-left: 100px;
-  /* Changes */
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Website Name Styling */
+/* Website Name */
 .website-name h1 {
-  font-size: 50px;
+  font-size: clamp(2rem, 5vw, 3.125rem);
   font-weight: 700;
-  letter-spacing: 3px;
-  margin-bottom: 20px;
+  letter-spacing: clamp(1px, 0.5vw, 3px);
+  margin-bottom: clamp(1rem, 3vw, 1.25rem);
   text-transform: uppercase;
   color: #fff;
   animation: fadeIn 1.5s ease-in-out;
 }
 
-/* Logo Image Styling */
-.container .logo img {
-  width: 200px;
-  height: auto;
-  animation: fadeIn 1.5s ease-in-out;
-}
-
-/* Slogan Styling */
+/* Slogan */
 .slogan p {
-  font-size: 26px;
+  font-size: clamp(1.125rem, 3vw, 1.625rem);
   font-style: italic;
   color: #e1e1e1;
-  animation: fadeIn 2s ease-in-out 0.5s; /* Fade-in effect */
+  animation: fadeIn 2s ease-in-out 0.5s;
 }
 
-/* Centered Button Styling */
+/* Button Styles */
 .button1 {
-  padding: 20px 40px;
+  padding: clamp(0.875rem, 2vw, 1.25rem) clamp(1.5rem, 3vw, 2.5rem);
   background-color: #00bcd4;
   color: #fff;
-  font-size: 22px;
+  font-size: clamp(1rem, 2vw, 1.375rem);
   font-weight: 600;
   border: none;
   border-radius: 50px;
@@ -104,19 +88,247 @@ body {
   transition: all 0.3s ease;
   position: absolute;
   bottom: 20%;
-  /* Changes */
   left: 50%;
   transform: translateX(-50%);
   box-shadow: 0 6px 20px rgba(0, 188, 212, 0.4);
   animation: bounceIn 1s ease-in-out;
+  width: fit-content;
+  max-width: 90%;
 }
 
 .button1:hover {
   background-color: #0097a7;
-  transform: translateX(-50%) scale(1.1) translateY(-5px); /* Slight hover scale */
+  transform: translateX(-50%) scale(1.1) translateY(-5px);
 }
 
-/* Bounce Animation for Button */
+/* Frame Container */
+.frame-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(1rem, 3vw, 2rem);
+  padding: clamp(1rem, 3vw, 2rem);
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 80vh;
+}
+
+/* Frame Title */
+.frame-title {
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-weight: bold;
+  color: #ffffff;
+  margin-top: clamp(2rem, 5vw, 6.25rem);
+  text-align: center;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding-bottom: clamp(0.5rem, 2vw, 0.625rem);
+  position: relative;
+}
+
+.frame-title::after {
+  content: "";
+  width: 80px;
+  height: 4px;
+  background-color: #0097a7;
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 1px;
+  box-shadow: 0 2px 8px rgba(0, 213, 255, 0.7);
+}
+
+/* Info Box */
+/* .info-box {
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: clamp(1rem, 3vw, 1.563rem);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  max-height: 100px;
+  transition: all 0.3s ease;
+} */
+
+/* .info-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+} */
+
+/* Medical Attention */
+.medical-attention {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: clamp(0.625rem, 2vw, 0.625rem);
+  background-color: #f0f9ff;
+  border-radius: 12px;
+  padding: clamp(1rem, 3vw, 1.25rem);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.medical-attention:hover {
+  transform: translateY(-5px);
+}
+
+/* Map Image */
+.map-image {
+  width: clamp(150px, 30vw, 220px);
+  height: clamp(150px, 30vw, 220px);
+  border-radius: 12px;
+  object-fit: cover;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.map-image:hover {
+  transform: scale(1.1);
+}
+
+/* Medical Text */
+.medical-text {
+  font-size: clamp(1rem, 2.5vw, 1.563rem);
+  font-weight: 400;
+  color: #1e3c72;
+  margin-top: clamp(0.625rem, 2vw, 0.625rem);
+  letter-spacing: 1px;
+  font-family: "Arial", sans-serif;
+}
+
+/* Button */
+.button {
+  padding: 12px 25px;
+  background-color: #00bcd4;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover {
+  background-color: #0097a7;
+  transform: translateY(-3px);
+}
+
+.button:active {
+  transform: translateY(2px);
+}
+
+/* Map Container */
+.map-container {
+  height: 100vh;
+  width: 100%;
+}
+
+/* Popup Styles */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup {
+  background-color: white;
+  backdrop-filter: blur;
+  padding: clamp(1rem, 3vw, 1.875rem);
+  color: #007bff;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+  text-align: center;
+  position: relative;
+  width: clamp(280px, 90vw, 500px);
+  height: auto;
+  min-height: 100px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 30px;
+  color: #007bff;
+  cursor: pointer;
+}
+
+#open-popup {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#open-popup:hover {
+  background-color: #0056b3;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .frame-container {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .mobile-menu-icon {
+    display: block;
+  }
+
+  .navbar {
+    padding: 0.938rem 1.25rem;
+  }
+
+  .button1 {
+    bottom: 10%;
+  }
+
+  .info-box {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .frame-container {
+    grid-template-columns: 1fr;
+  }
+
+  .info-box {
+    height: auto;
+    margin-bottom: 1.25rem;
+  }
+
+  .map-image {
+    width: clamp(100px, 50vw, 150px);
+    height: clamp(100px, 50vw, 150px);
+  }
+
+  .medical-attention {
+    padding: 0.625rem;
+  }
+}
+
+/* Animations */
 @keyframes bounceIn {
   0% {
     opacity: 0;
@@ -132,7 +344,6 @@ body {
   }
 }
 
-/* Fade-in Animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -144,48 +355,14 @@ body {
   }
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
+@keyframes jump {
+  0%,
+  100% {
+    transform: translateY(0);
   }
-
-  .mobile-menu-icon {
-    display: block;
+  50% {
+    transform: translateY(-30px);
   }
-
-  .navbar {
-    padding: 15px 20px;
-  }
-
-  .website-name h1 {
-    font-size: 40px; /* Reduce font size on small screens */
-  }
-
-  .slogan p {
-    font-size: 20px; /* Adjust slogan font size for small screens */
-  }
-
-  .container {
-    padding: 10px; /* Adjust container padding for mobile */
-  }
-
-  .button1 {
-    font-size: 18px; /* Adjust button size for mobile */
-    padding: 15px 30px;
-    bottom: 10%;
-  }
-}
-
-/* Frame Container */
-.frame-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  text-align: center;
-  height: 80vh;
-  font-family: "Poppins", sans-serif;
 }
 
 .alert-background {
@@ -211,214 +388,4 @@ body {
   font-size: 24px;
   color: white;
   animation: jump 2s infinite ease-in-out; /* Animation applied */
-}
-
-/* Keyframe animation for jumping */
-@keyframes jump {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-30px); /* Jump height */
-  }
-}
-
-.frame-title {
-  font-size: 36px;
-  font-weight: bold;
-  color: #ffffff;
-  margin-top: 100px;
-  text-align: center;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-
-  padding-bottom: 10px;
-  position: relative;
-}
-
-.frame-title::after {
-  content: "";
-  width: 80px;
-  height: 4px;
-  background-color: #0097a7;
-  position: absolute;
-  bottom: -5px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 1px;
-  box-shadow: 0 2px 8px rgba(0, 213, 255, 0.7);
-}
-
-/* Info Box */
-.info-box {
-  background-color: #ffffff;
-  border-radius: 15px;
-  padding: 25px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  width: 300px;
-  transition: all 0.3s ease;
-}
-
-/* Hover Effect for Info Box */
-.info-box:hover {
-  transform: scale(1.05);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-}
-
-/* Medical Attention Section */
-.medical-attention {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
-  background-color: #f0f9ff;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.medical-attention:hover {
-  transform: translateY(-5px);
-}
-
-/* Map Image */
-.map-image {
-  width: 220px;
-  height: 220px;
-  border-radius: 12px;
-  object-fit: cover;
-  margin-bottom: 15px;
-  transition: transform 0.3s ease;
-}
-
-.map-image:hover {
-  transform: scale(1.1);
-}
-
-/* changes */
-/* Text Styling */
-.medical-text {
-  font-size: 25px;
-  font-weight: 400;
-  color: #1e3c72;
-  margin-top: 10px;
-  letter-spacing: 1px;
-  font-family: "Arial", sans-serif;
-}
-
-.button {
-  padding: 12px 25px;
-  background-color: #00bcd4;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 400;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  margin-top: 20px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-/* Button Hover Effect */
-.button:hover {
-  background-color: #0097a7;
-  transform: translateY(-3px);
-}
-
-/* Button Active State */
-.button:active {
-  transform: translateY(2px);
-}
-
-.map-container {
-  height: 100vh; /* Set the height */
-  width: 100%; /* Set the width */
-}
-
-/* Responsiveness for Smaller Screens */
-@media (max-width: 768px) {
-  .info-box {
-    width: 90%;
-    padding: 15px;
-  }
-
-  .map-image {
-    width: 180px;
-    height: 180px;
-  }
-
-  .button {
-    font-size: 14px;
-    padding: 10px 20px;
-  }
-}
-
-/* Popup overlay (blurred background) */
-.popup-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Dark, semi-transparent overlay */
-  backdrop-filter: blur(8px); /* Blurs the background */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000; /* Ensures popup appears above everything */
-}
-
-/* Popup box */
-.popup {
-  background-color: white;
-  backdrop-filter: blur;
-  padding: 30px;
-  color: #007bff;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
-  text-align: center;
-  position: relative;
-  width: 500px;
-  height: 100px;
-}
-
-/* Close button */
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 30px;
-  color: #007bff;
-  cursor: pointer;
-}
-
-/* Button styles */
-#open-popup {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-#open-popup:hover {
-  background-color: #0056b3;
-}
-
-@media (max-width: 768px) {
-  .frame-title {
-    font-size: 20px;
-  }
-  .frame-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 20px;
-  }
-  
 }

@@ -15,9 +15,7 @@ function Frame() {
     if (!navigator.userAgent.match(/Mobi/)) {
       openPopup();
     }
-
   }
-
 
   return (
     <>
@@ -79,9 +77,10 @@ function Frame() {
           <div className="medical-attention">
             <img src={call} alt="Map" className="map-image" />
             <div className="medical-text">Call Nearby Rescuer</div>
-            <div className="call">
-              {/* <button id="open-popup " className="button" onClick={openPopup} > */}
-              <a  id="open-popup" className="button" href="tel:+977 9842136211" onClick={checkCall}>Call Rescuer</a>
+            <div className=" button">
+              <a href="tel:+977 9842136211" onClick={checkCall}>
+                Call Rescuer
+              </a>
               {/* </button> */}
             </div>
           </div>

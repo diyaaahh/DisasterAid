@@ -22,7 +22,7 @@
   position: fixed;
   bottom: 100px;
   right: 20px;
-  width: 300px;
+  width: 400px;
   max-height: 400px;
   background-color: white;
   border: 1px solid #0078ff;
@@ -55,6 +55,7 @@
   background-color: #0078ff;
   color: white;
   align-self: flex-end;
+  font-size: 14px;
 }
 
 .message.ai {
