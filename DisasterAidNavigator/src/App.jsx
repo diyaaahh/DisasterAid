@@ -10,6 +10,7 @@ import Frame from "./components/Frame";
 import HomePage from "./components/HomePage";
 import HospitalPage from "./pages/NearbyHospitalPage";
 import DisasterHeatmap from "./pages/DisasterPage";
+import Weather from "./components/Weather";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/chatbot" element={<ChatInterface />} />
         <Route path="/hospital" element={<HospitalPage/>}/>
         <Route path="/disaster" element={<DisasterHeatmap/>}/>
+        <Route path='/weather' element={<Weather/>}/>
       </Routes>
     </Router>
    
