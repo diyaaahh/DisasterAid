@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Marker, Popup } from 'react-leaflet';
 import MarkerUrl from "../assets/hospital-marker.png";
 import L from "leaflet";
-import RoutesPath from './hospitalRoutes';
+import RoutesPath from './HospitalRoutes';
+import { useHospitalContext } from '../context/HospitalContext';
 
 const HospitalFinder = ({ location }) => {
     const [hospitals, setHospitals] = useState([]);
@@ -10,8 +11,13 @@ const HospitalFinder = ({ location }) => {
     const [selectedHospital, setSelectedHospital] = useState({
         id: null,
         lat: null,
-        lon: null
+        lon: null,
+        name: null,
+        address: null,
+        phone: null,
+        website: null
     });
+    const {currentHospital, setCurrentHospital} = useHospitalContext();
 
     const fetchHospitals = async () => {
         if (!location) return;
@@ -36,7 +42,7 @@ const HospitalFinder = ({ location }) => {
             }
 
             const data = await response.json();
-            console.log(data);
+            // console.log(data);
 
             const hospitalData = data.elements
                 .filter(el => el.type === 'node' && el.tags)
@@ -51,6 +57,7 @@ const HospitalFinder = ({ location }) => {
                 }));
 
             setHospitals(hospitalData);
+
         } catch (err) {
             setError(err instanceof Error ? err.message : 'An unknown error occurred');
         }
@@ -66,13 +73,26 @@ const HospitalFinder = ({ location }) => {
         iconAnchor: [25, 50],
     });
 
-    const handleMarkerClick = (hospitalId, lat, lon) => {
+    const handleMarkerClick =  (hospitalId, lat, lon, name , address, phone , website) => {
+        console.log(hospitalId);
+
         setSelectedHospital(prev => 
             prev.id === hospitalId 
-                ? { id: null, lat: null, lon: null } 
-                : { id: hospitalId, lat, lon }
+                ? {  id: null,
+                    lat: null,
+                    lon: null,
+                    name: null,
+                    address: null,
+                    phone: null,
+                    website: null } 
+                : { id: hospitalId, lat, lon, name, address, phone, website }
         );
+
     };
+
+
+    setCurrentHospital(selectedHospital);
+    
 
     return (
         <>
@@ -83,7 +103,7 @@ const HospitalFinder = ({ location }) => {
                         position={[hospital.lat, hospital.lon]}
                         icon={customicon}
                         eventHandlers={{
-                            click: () => handleMarkerClick(hospital.id, hospital.lat, hospital.lon)
+                            click: () => handleMarkerClick(hospital.id, hospital.lat, hospital.lon, hospital.name, hospital.address, hospital.phone, hospital.website)
                         }}
                     >
                         <Popup>

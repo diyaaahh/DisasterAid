@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Polyline, Popup } from 'react-leaflet';
+import { useRouteContext } from '../context/RouteContext.Jsx';
 
 const RoutesPath = ({ userlocation, hospitallocation }) => {
     const [routeCoordinates, setRouteCoordinates] = useState(null);
     const [selectedRouteIndex, setSelectedRouteIndex] = useState(null);
+
+    const { setAvailableRoute } = useRouteContext();
 
     function decodePolyline(str, precision = 5) {
         let index = 0;
@@ -98,14 +101,28 @@ const RoutesPath = ({ userlocation, hospitallocation }) => {
             );
 
             setRouteCoordinates(processedRoutes);
+
+
+            setAvailableRoute(processedRoutes);
+
+            console.log(processedRoutes);
+             
         } catch (err) {
             console.error("Error fetching routes", err);
         }
     };
 
+    // useEffect(() => {
+    //     fetchRoutes();
+    // }, [userlocation, hospitallocation]);
+
     useEffect(() => {
-        fetchRoutes();
-    }, [userlocation, hospitallocation]);
+        const debounceTimer = setTimeout(() => {
+            fetchRoutes();
+        }, 500); // Wait 500ms before making the call
+    
+        return () => clearTimeout(debounceTimer); // Cleanup previous timeout
+    }, []);
 
     const formatDuration = (seconds) => {
         const hours = Math.floor(seconds / 3600);

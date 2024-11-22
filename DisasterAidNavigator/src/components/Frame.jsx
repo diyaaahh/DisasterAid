@@ -1,5 +1,6 @@
 import "../App.css";
 import map from "../assets/map.png";
+import { Link } from "react-router-dom"
 
 function Frame() {
   return (
@@ -8,8 +9,8 @@ function Frame() {
         <div className="medical-attention">
           <img src={map} alt="Map" className="map-image" />
           <div className="medical-text">Medical Attention</div>
-          <div className="button" onClick={console.log("click")}>
-            Click Here
+          <div className="button" >
+          <Link  to={"/hospital"} >Click Here</Link>
           </div>
         </div>
       </div>
@@ -17,8 +18,8 @@ function Frame() {
         <div className="medical-attention">
           <img src={map} alt="Map" className="map-image" />
           <div className="medical-text">Medical Attention</div>
-          <div className="button" onClick={console.log("click")}>
-            Click Here
+          <div className="button" >
+          <Link  to={"/disaster"} >Click Here</Link>
           </div>
         </div>
       </div>
@@ -26,8 +27,8 @@ function Frame() {
         <div className="medical-attention">
           <img src={map} alt="Map" className="map-image" />
           <div className="medical-text">Medical Attention</div>
-          <div className="button" onClick={console.log("click")}>
-            Click Here
+          <div className="button" >
+          <Link  to={"/hospitals"} >Click Here</Link>
           </div>
         </div>
       </div>

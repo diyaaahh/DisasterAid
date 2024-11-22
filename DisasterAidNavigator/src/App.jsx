@@ -17,8 +17,6 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home/>} />
-        <Route path="/h" element={<HomePage/>} />
-        <Route path="/chatbot" element={<ChatInterface />} />
         <Route path="/hospital" element={<HospitalPage/>}/>
         <Route path="/disaster" element={<DisasterHeatmap/>}/>
         <Route path='/weather' element={<Weather/>}/>

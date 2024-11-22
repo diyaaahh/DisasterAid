@@ -31,10 +31,11 @@ export default function Map({setUserPosition}) {
     }
   }
 
-
+  // console.log(location);
   useEffect(() => {
     console.log("Fetching user location...");
     getUserLocation();
+    console.log(location);
   }, []);
   
 

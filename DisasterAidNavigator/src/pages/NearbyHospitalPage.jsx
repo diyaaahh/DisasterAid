@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import Map from '../components/Map';
+import { useHospitalContext } from '../context/HospitalContext'
+import { useRouteContext } from '../context/RouteContext'
 
 export default function HospitalPage() {
   const [userLocation, setUserLocation] = useState(null);
@@ -53,22 +55,64 @@ export default function HospitalPage() {
     setUserLocation(location);
   };
 
+  const {currentHospital} = useHospitalContext();
+  const {availableRoute} = useRouteContext();
+
+  console.log(currentHospital)
+
+  const formatDuration = (seconds) => {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    
+    if (hours > 0) {
+        return `${hours} hr ${minutes} min`;
+    }
+    return `${minutes} min`;
+};
+
+const formatDistance = (meters) => {
+    return (meters / 1000).toFixed(1) + ' km';
+};
+  
+
   return (
     <div className="flex h-screen">
       <div className="w-64 bg-gray-900 text-white flex flex-col">
         <div className="p-4 border-b border-gray-700">
           <h1 className="text-2xl font-bold">DisasterAid</h1>
-        </div>
+        </div> 
+      
+
         <nav className="flex-1 p-4 space-y-4">
-          <div className="flex items-center space-x-2">
-            <i className="fas fa-map"></i>
-            <span>Disaster Map</span>
-          </div>
+    
+          {currentHospital && 
+            (!currentHospital.id ? <div> Select hospital</div> : 
+            <div>
+            <p>Name: {currentHospital.name}</p>
+            <p>Address: {currentHospital.address}</p>
+            
+        {availableRoute && availableRoute.length > 0 ? (
+          <div>
+            <h2 className="text-xl font-bold mt-4">Available Routes:</h2>
+            <ul className="list-disc list-inside">
+              {availableRoute.map((route, index) => (
+                <li key={index}>
+                  <p>Route Name: {index+1}</p>
+                  <p>Distance: {formatDistance(route.summary.distance)} km</p>
+                  <p>Estimated Time: {formatDuration(route.summary.duration)} mins</p>
+                </li>
+              ))}
+            </ul>
+          </div>) : <div></div>}
+
+            </div>
+            )}
           <div className="flex items-center space-x-2">
             <i className="fas fa-shield-alt"></i>
             <span>Hospital Maps</span>
           </div>
-{weatherData && (
+    
+          {weatherData && (
   <div className="bg-white rounded-lg shadow-lg p-6 max-w-sm mx-auto absolute bottom-7">
   <div className="flex items-center justify-between">
     <div className="flex items-center space-x-4">
@@ -87,10 +131,13 @@ export default function HospitalPage() {
   </div>
 </div>
 )}
-  
+
         </nav>
       </div>
+
+
       
+            
       <Map setUserPosition={handleUserLocationUpdate} />
     </div>
   );

@@ -32,6 +32,7 @@ const HeatmapLayer = ({ points }) => {
 
   return null;
 };
+
 const Legend = () => (
   <div style={{
     position: 'absolute',
@@ -42,11 +43,11 @@ const Legend = () => (
     borderRadius: '5px',
     zIndex: 1000
   }}>
-    <h4>Risk Levels</h4>
-    <div><span style={{ background: 'blue', width: '10px', height: '10px', display: 'inline-block', marginRight: '5px' }}></span>Low</div>
-    <div><span style={{ background: 'green', width: '10px', height: '10px', display: 'inline-block', marginRight: '5px' }}></span>Moderate</div>
-    <div><span style={{ background: 'yellow', width: '10px', height: '10px', display: 'inline-block', marginRight: '5px' }}></span>High</div>
-    <div><span style={{ background: 'red', width: '10px', height: '10px', display: 'inline-block', marginRight: '5px' }}></span>Severe</div>
+    <h4 style={{color: 'black', height: '30px', width:'120px'}}>Risk Levels</h4>
+    <div style={{color: 'black' , height: '30px'}}><span style={{ background: 'blue', width: '10px', height: '15px', display: 'inline-block', marginRight: '5px' }}></span>Low</div>
+    <div style={{color: 'black', height: '30px'}}><span style={{ background: 'green', width: '10px', height: '15px', display: 'inline-block', marginRight: '5px' }}></span>Moderate</div>
+    <div style={{color: 'black', height: '30px'}}><span style={{ background: 'yellow', width: '10px', height: '15px', display: 'inline-block', marginRight: '5px' }}></span>High</div>
+    <div style={{color: 'black', height: '30px'}}><span style={{ background: 'red', width: '10px', height: '15px', display: 'inline-block', marginRight: '5px' }}></span>Severe</div>
   </div>
 );
 
