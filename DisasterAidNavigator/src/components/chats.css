@@ -65,6 +65,7 @@
 
 /* Chat Input */
 .chat-input {
+  color: black;
   display: flex;
   border-top: 1px solid #ccc;
 }
